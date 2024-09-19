@@ -1,4 +1,25 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    images: {
+        remotePatterns: [
+            {
+                protocol: "http",
+                hostname: "localhost",
+            },
+            // add image domains ,for instance, cloudfront
+        ],
+    },
+    // redirect example
+    async redirects() {
+        return [
+            {
+                source: "/protected-old",
+                destination: "/protected",
+                permanent: true,
+            },
+        ];
+    },
+    reactStrictMode: false,
+};
 
 export default nextConfig;
