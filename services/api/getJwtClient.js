@@ -1,6 +1,6 @@
 import { parseCookies, destroyCookie, setCookie } from "nookies";
 import { JWT_KEY_IN_COOKIE, MILLISECONDS_IN_A_YEAR } from "@/constants";
-import { isEmptyObj } from "./utils";
+import { isEmptyObj } from "../utils";
 
 export function getJwtClient() {
     const cookies = parseCookies();
