@@ -53,14 +53,7 @@ export default function LoginForm() {
 
     return (
         <>
-            {error ? (
-                <Notification
-                    onClose={() => setError(null)}
-                    color="red"
-                    title={error}
-                    className="absolute start-0 top-0 w-full"
-                />
-            ) : null}
+            <p className="my-3 text-red-500">{error}</p>
             <form
                 onSubmit={form.onSubmit(submitLogin)}
                 className="flex flex-col gap-4"

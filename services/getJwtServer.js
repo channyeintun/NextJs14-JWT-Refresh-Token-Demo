@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { JWT_KEY_IN_COOKIE, USER_KEY_IN_COOKIE } from "@/constants";
+import { JWT_KEY_IN_COOKIE } from "@/constants";
 import { isEmptyObj } from "./utils";
 
 // cookies can only be accessed inside components or routes
@@ -7,8 +7,6 @@ export function getJwtServer() {
     const cookiesList = cookies();
 
     let jwt;
-
-    let user;
 
     if (cookiesList.has(JWT_KEY_IN_COOKIE)) {
         const jwtString = cookiesList.get(JWT_KEY_IN_COOKIE).value;
@@ -22,11 +20,6 @@ export function getJwtServer() {
         } else {
             jwt = parsedJSON;
         }
-    }
-
-    if (cookiesList.has(USER_KEY_IN_COOKIE)) {
-        const userString = cookiesList.get(USER_KEY_IN_COOKIE).value;
-        user = JSON.parse(userString);
     }
 
     const removeJwt = () => cookiesList.delete(JWT_KEY_IN_COOKIE);
@@ -58,6 +51,5 @@ export function getJwtServer() {
         jwt,
         removeJwt,
         setJwt,
-        user,
     };
 }

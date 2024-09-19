@@ -7,13 +7,5 @@ export const GuestMenu = () => {
 
     const isNoJwt = jwt === undefined || jwt === null || isEmptyObj(jwt);
 
-    return (
-        isNoJwt && (
-            <>
-                <div className="flex gap-6 max-md:hidden">
-                    <Link href="/login">Login</Link>
-                </div>
-            </>
-        )
-    );
+    return isNoJwt && <Link href="/login">Login</Link>;
 };
