@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { useForm } from "@mantine/form";
+import { useForm } from "react-hook-form";
 import nProgress from "nprogress";
 
 import {
@@ -21,12 +21,7 @@ export default function LoginForm() {
     const { setJwt } = useAuthStore();
     const { setJwt: setJwtIntoCookie } = getJwtClient();
 
-    const form = useForm({
-        initialValues: {
-            mobileNumber: "",
-            password: "",
-        },
-    });
+    const { register, handleSubmit } = useForm();
 
     const [error, setError] = useState();
 
@@ -55,7 +50,7 @@ export default function LoginForm() {
         <>
             <p className="my-3 text-red-500">{error}</p>
             <form
-                onSubmit={form.onSubmit(submitLogin)}
+                onSubmit={handleSubmit(submitLogin)}
                 className="flex flex-col gap-4"
             >
                 <input
@@ -64,7 +59,7 @@ export default function LoginForm() {
                     className="placeholder:text-medium grow text-base leading-5 placeholder:text-base placeholder:text-gray-500"
                     placeholder="Mobile Number"
                     radius={8}
-                    {...form.getInputProps("mobileNumber")}
+                    {...register("mobileNumber", { required: true })}
                 />
                 <input
                     className="placeholder:text-medium grow text-base leading-5 placeholder:text-base placeholder:text-gray-500"
@@ -72,12 +67,9 @@ export default function LoginForm() {
                     size="lg"
                     placeholder="Password"
                     radius={8}
-                    {...form.getInputProps("password")}
+                    {...register("password", { required: true })}
                 />
                 <button
-                    disabled={
-                        !(form.values.mobileNumber && form.values.password)
-                    }
                     radius={8}
                     size="lg"
                     className="w-full bg-gray-950 text-base font-medium leading-5 text-white hover:bg-gray-900 disabled:bg-gray-600"
