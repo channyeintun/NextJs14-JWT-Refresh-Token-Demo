@@ -62,7 +62,7 @@ For example,
 
 -   Next.js
 -   TailwindCSS
--   Mantine
+-   React-hook-form
 -   Axios
 -   Nookies
 
