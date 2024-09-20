@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from "next/navigation";
 
 import useAuthStore from "@/states/zustand/auth";
-import { removeAPIToken, getJwtClient, axiosClient } from "@/services";
+import { removeAPIToken, getClientJwt, axiosClient } from "@/services";
 import Link from "next/link";
 
 export const UserMenu = () => {
@@ -11,7 +11,7 @@ export const UserMenu = () => {
 
     const router = useRouter();
 
-    const { removeJwt: removeJwtFromCookie } = getJwtClient();
+    const { removeJwt: removeJwtFromCookie } = getClientJwt();
 
     const { jwt, removeJwt: removeJwtFromStore } = useAuthStore();
 

@@ -11,7 +11,7 @@ import {
     setRefreshTokenInterceptor,
     CLIENT_API,
     axiosClient,
-    getJwtClient,
+    getClientJwt,
 } from "@/services";
 import useAuthStore from "@/states/zustand/auth";
 
@@ -19,7 +19,7 @@ export default function LoginForm() {
     const router = useRouter();
 
     const { setJwt } = useAuthStore();
-    const { setJwt: setJwtIntoCookie } = getJwtClient();
+    const { setJwt: setJwtIntoCookie } = getClientJwt();
 
     const { register, handleSubmit } = useForm();
 

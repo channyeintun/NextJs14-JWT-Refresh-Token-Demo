@@ -3,7 +3,7 @@ import { JWT_KEY_IN_COOKIE } from "@/constants";
 import { isEmptyObj } from "../utils";
 
 // cookies can only be accessed inside components or routes
-export function getJwtServer() {
+export function getServerJwt() {
     const cookiesList = cookies();
 
     let jwt;

@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { createApi } from "./createApi";
 import { BASE_URL } from "./baseUrl";
-import { getJwtClient } from "./getJwtClient";
+import { getClientJwt } from "./getClientJwt";
 import { setAPIToken } from "./setAPIToken";
 import { setRefreshTokenInterceptor } from "./setRefreshTokenInterceptor";
 
@@ -12,7 +12,7 @@ export const axiosClient = axios.create({
     baseURL: BASE_URL,
 });
 
-const { jwt } = getJwtClient();
+const { jwt } = getClientJwt();
 
 axiosClient.defaults.headers["Cache-Control"] = "no-cache";
 axiosClient.defaults.headers["Pragma"] = "no-cache";

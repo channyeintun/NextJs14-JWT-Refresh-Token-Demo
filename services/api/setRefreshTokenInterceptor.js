@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { API_URL, getJwtClient, setAPIToken } from "@/services";
+import { API_URL, getClientJwt, setAPIToken } from "@/services";
 import { refreshToken } from "./refreshToken";
 
 let refreshing_token = null;
@@ -9,7 +9,7 @@ export function setRefreshTokenInterceptor({ apiInstance }) {
     apiInstance.interceptors.response.use(
         (response) => response,
         async (error) => {
-            const { jwt, setJwt } = getJwtClient();
+            const { jwt, setJwt } = getClientJwt();
 
             const originalRequest = error.config;
 

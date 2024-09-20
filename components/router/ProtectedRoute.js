@@ -1,8 +1,8 @@
-import { getJwtServer } from "@/services/api/getJwtServer";
+import { getServerJwt } from "@/services/api/getServerJwt";
 import { AccessDenied } from "../AccessDenied";
 
 const ProtectedRoute = ({ onAuthenticated }) => {
-    const { jwt } = getJwtServer();
+    const { jwt } = getServerJwt();
 
     if (onAuthenticated) {
         if (jwt) {
